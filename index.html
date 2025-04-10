@@ -1143,38 +1143,164 @@ Yes, this is in HTML format. Let me provide you with just Part 1 (the HTML and C
         opacity: 1;
     }
 
-    /* Mobile-specific adjustments */
-    @media (max-width: 480px) {
-        .well-button-container {
-            right: 15px; /* Slightly closer to edge on small screens */
-        }
-        
-        .well-popup, .well-thank-popup {
-            width: 90vw; /* Even more responsive on very small screens */
-            right: 90px; /* Adjusts the position relative to the button */
-        }
-        
-        .well-option-content h4 {
-            font-size: 15px; /* Slightly smaller text */
-        }
-        
-        .well-option-content p {
-            font-size: 12px;
-        }
-        
-        .well-impact-section {
-            margin-bottom: 15px;
-            padding-bottom: 15px;
-        }
-        
-        .well-impact-icon {
-            font-size: 24px; /* Smaller icon */
-        }
-        
-        .well-depth-visualization {
-            height: 250px; /* Shorter visualization */
-        }
+ /* Mobile-specific adjustments */
+@media (max-width: 480px) {
+    .well-button-container {
+        right: 15px; /* Slightly closer to edge on small screens */
     }
+    
+    .well-popup, .well-thank-popup {
+        width: 90vw; /* Even more responsive on very small screens */
+        right: 90px; /* Adjusts the position relative to the button */
+    }
+    
+    .well-option-content h4 {
+        font-size: 15px; /* Slightly smaller text */
+    }
+    
+    .well-option-content p {
+        font-size: 12px;
+    }
+    
+    .well-impact-section {
+        margin-bottom: 15px;
+        padding-bottom: 15px;
+    }
+    
+    .well-impact-icon {
+        font-size: 24px; /* Smaller icon */
+    }
+    
+    .well-depth-visualization {
+        height: 250px; /* Shorter visualization */
+    }
+}
+```
+
+**REPLACE THAT ENTIRE SECTION WITH:**
+
+```css
+/* Mobile optimization improvements */
+@media (max-width: 767px) {
+    /* Center the popup and make it take up most of the screen */
+    .well-popup, .well-thank-popup {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 90vw;
+        max-width: 90vw;
+        max-height: 85vh;
+        right: auto;
+        overflow-y: auto;
+    }
+    
+    /* Adjust the arrow pointer position */
+    .well-popup:before, .well-thank-popup:before {
+        display: none; /* Remove the arrow on mobile */
+    }
+    
+    /* Make the button container position absolute at the bottom for mobile */
+    .well-button-container {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        top: auto;
+        transform: none;
+    }
+    
+    /* Make tab content fit better on mobile */
+    .well-tab-content {
+        max-height: 70vh;
+        padding: 12px;
+    }
+    
+    /* Smaller padding for various elements */
+    .well-option {
+        padding: 10px;
+    }
+    
+    .well-impact-section {
+        margin-bottom: 12px;
+        padding-bottom: 12px;
+    }
+    
+    /* Smaller depth visualization on mobile */
+    .well-depth-visualization {
+        height: 200px;
+    }
+    
+    /* Adjust font sizes for mobile */
+    .well-popup-title {
+        font-size: 16px;
+    }
+    
+    .well-popup-subtitle {
+        font-size: 12px;
+    }
+    
+    .well-tab-button {
+        font-size: 13px;
+        padding: 10px 5px;
+    }
+    
+    .well-option-content h4 {
+        font-size: 14px;
+    }
+    
+    .well-option-content p {
+        font-size: 12px;
+    }
+    
+    /* Make form elements more touch-friendly */
+    .well-custom-input input[type="number"],
+    .well-name-input input[type="text"],
+    .well-donate-button, 
+    .well-recurring-button, 
+    .well-sponsor-now-button {
+        font-size: 16px; /* Minimum size to prevent zoom on input focus */
+        padding: 12px;
+    }
+}
+
+/* Extra small devices (phones under 480px) */
+@media (max-width: 480px) {
+    .well-popup, .well-thank-popup {
+        width: 95vw;
+        max-width: 95vw;
+        max-height: 80vh;
+    }
+    
+    /* Compact the sponsor options for very small screens */
+    .well-option-icon {
+        font-size: 20px;
+        margin-right: 8px;
+    }
+    
+    .well-check {
+        width: 18px;
+        height: 18px;
+    }
+    
+    /* Even smaller visualization for tiny screens */
+    .well-depth-visualization {
+        height: 180px;
+    }
+    
+    /* Make impact stats more compact */
+    .well-impact-stats {
+        padding: 10px 5px;
+    }
+    
+    .well-stat-number {
+        font-size: 20px;
+    }
+    
+    .well-stat-label {
+        font-size: 10px;
+    }
+}
+}
 
     /* Styling for disabled state */
     .well-donate-button:disabled, .well-recurring-button:disabled {
